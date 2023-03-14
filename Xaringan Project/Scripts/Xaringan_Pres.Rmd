@@ -1,0 +1,37 @@
+---
+title: "R Package -- Xaringan"
+subtitle: "⚔<br/>"
+author: "Cameron, David, Mikayla, Rachel"
+date: "`r Sys.Date()`"
+output:
+  xaringan::moon_reader:
+    yolo: true
+    lib_dir: libs
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+---
+
+# Get Started  
+
+## What is Xaringan?  
+
+Xaringan is an R package used to create HTML presentations using Rmarkdown interfaces.  
+
+Slides created by Xaringan are rendered by remark.js (an HTML JavaScript presentation program) and converted to an HTML form from R markdown.  
+
+An understanding of **remark.js** is a good place to start!!
+
+![xaringan logo](https://user-images.githubusercontent.com/163582/45438104-ea200600-b67b-11e8-80fa-d9f2a99a03b0.png)
+
+---
+# Basics of remark.js
+
+1) Regular Markdown rules apply with only a single exception: .
+
+        - A line containing three dashes constitutes a new slide (---)  
+2) remark.js does not support R, only Markdown         
+
+    
+    
