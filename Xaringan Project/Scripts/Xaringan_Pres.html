@@ -58,8 +58,6 @@ An understanding of **remark.js** is a good place to start!!
 4. remark.js can be thought of as a precursor to xaringan - xaringan understands R ]
 
 ---
-background-image: url(https://github.com/yihui/xaringan/releases/download/v0.0.2/karl-moustache.jpg)
----
 
 .left-column[&lt;span style="font-size: 40px;"&gt;Basics of Xaringan&lt;/span&gt;]
 
@@ -97,6 +95,184 @@ Everyone should go ahead and install xaringan using:
 --
 Now...
 
+---
+
+---
+
+# Adding R code
+
+- Adding a R code chunk to the presentation is the same as in a RMarkdown document.
+
+  - Using **Ctrl+Alt+I** _(for both windows and mac)_ still works 
+  
+  - Example:
+.pull-center[
+
+```r
+library(tidyverse)
+library(here)
+```
+]  
+
+---
+background-image: url(https://github.com/yihui/xaringan/releases/download/v0.0.2/karl-moustache.jpg)
+---
+  
+# Higlighting Code
+- You can highlight code by using '{{}}' or '#&lt;&lt;':
+
+  - Example:
+  
+
+```r
+*Chem_Data &lt;- read.csv(here("Xaringan Project", "Data", "chemicaldata_maunalua.csv"))
+```
+
+
+- _You can also use a leading asterisk but it is harder to use compared to the brackets_
+---
+
+# Adding Plots
+
+- Plots are fairly easy to add.
+
+- Use an R Code Chunk and plot like you normally would.
+
+.pull-left[
+
+```r
+*#.pull-left[
+Clean_Chem_Data %&gt;%
+  ggplot(aes(x = NN,
+             y = Phosphate,
+             color = Zone))+
+  geom_point(size = 2.5)+
+  geom_smooth(method = lm)+
+  theme_bw()+
+  scale_color_viridis_d()+
+* facet_wrap(~Zone)#]
+```
+]
+
+.pull-right[
+![](Xaringan_Pres_files/figure-html/exampleplot-out-1.png)&lt;!-- --&gt;
+
+]
+---
+
+# Adding a plot
+
+- To make the code chunk and plot separate, you need to use:
+
+  - Two seperate R code chunks
+  
+      - One contains the code for the plot but add **eval = FALSE** to the {r} section to keep the plot from showing.
+    
+      - The other is a R code chunk that uses the name given to the plot code chunk but instead adds _-out_ to the end.
+    
+          - Add **ref.label="plot name"** to show the plot.
+      
+- You can then use **pull-left[]**, **pull-right[]**, and **pull-center[]** around the code chunks to move them on the slide.
+
+  - _When using these funtions makes sure to put a "." in front of them_
+---
+
+# Adding a Table
+
+- You are able to add a kable table to the presentation
+
+  - _Make sure it is in HTML format or it will not work_
+  
+  - Example:
+  
+
+```r
+knitr::kable(head(Chem_Data[, 1:5]), format = 'html')
+```
+
+&lt;table&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:right;"&gt; Waypoint &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; Zone &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; Lat &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; Long &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; Site &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 1 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Transition &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 21.27531 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; -157.7618 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; W &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 2 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Transition &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 21.27523 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; -157.7627 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; W &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 3 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Transition &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 21.27504 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; -157.7633 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; W &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 4 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Transition &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 21.27449 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; -157.7640 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; W &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 5 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Diffuse &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 21.27503 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; -157.7617 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; W &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 6 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Diffuse &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 21.27485 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; -157.7623 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; W &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+---
+
+# Autoplay
+
+- You can enable _autoplay_ by adding to the **nature** section of the YAML at the beginning of the presentation.
+
+
+
+```r
+output:
+  xaringan::moon_reader:
+    nature:
+*      autoplay: 50000
+```
+
+- To make the presentation loop after it ends, add the sub-option called _loop_ to **TRUE**
+
+
+```r
+output:
+  xaringan::moon_reader:
+    nature:
+      autoplay:
+        interval: 50000
+*       loop: true
+```
+
+---
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>

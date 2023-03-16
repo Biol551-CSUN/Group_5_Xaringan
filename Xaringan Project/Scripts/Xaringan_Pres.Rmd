@@ -78,3 +78,122 @@ install.packages("xaringan")   #<<
 --
 Now...
 
+---
+
+---
+
+# Adding R code
+
+- Adding a R code chunk to the presentation is the same as in a RMarkdown document.
+
+  - Using **Ctrl+Alt+I** _(for both windows and mac)_ still works 
+  
+  - Example:
+.pull-center[
+```{r, message=FALSE}
+library(tidyverse)
+library(here)
+```
+]  
+
+---
+  
+# Higlighting Code
+- You can highlight code by using '{{}}' or '#<<':
+
+  - Example:
+  
+```{r}
+{{Chem_Data <- read.csv(here("Xaringan Project", "Data", "chemicaldata_maunalua.csv"))}}
+```
+```{r, echo=FALSE}
+Clean_Chem_Data <- Chem_Data %>%
+  drop_na()
+```
+
+- _You can also use a leading asterisk but it is harder to use compared to the brackets_
+---
+
+# Adding Plots
+
+- Plots are fairly easy to add.
+
+- Use an R Code Chunk and plot like you normally would.
+
+.pull-left[
+```{r, exampleplot, eval= FALSE, message=FALSE}
+#.pull-left[        #<<
+Clean_Chem_Data %>%
+  ggplot(aes(x = NN,
+             y = Phosphate,
+             color = Zone))+
+  geom_point(size = 2.5)+
+  geom_smooth(method = lm)+
+  theme_bw()+
+  scale_color_viridis_d()+
+  facet_wrap(~Zone)#]       #<<
+```
+]
+
+.pull-right[
+```{r exampleplot-out, ref.label="exampleplot", echo=FALSE, message=FALSE, warning=FALSE}
+
+```
+
+]
+---
+
+# Adding a plot
+
+- To make the code chunk and plot separate, you need to use:
+
+  - Two seperate R code chunks
+  
+      - One contains the code for the plot but add **eval = FALSE** to the {r} section to keep the plot from showing.
+    
+      - The other is a R code chunk that uses the name given to the plot code chunk but instead adds _-out_ to the end.
+    
+          - Add **ref.label="plot name"** to show the plot.
+      
+- You can then use **pull-left[]**, **pull-right[]**, and **pull-center[]** around the code chunks to move them on the slide.
+
+  - _When using these funtions makes sure to put a "." in front of them_
+---
+
+# Adding a Table
+
+- You are able to add a kable table to the presentation
+
+  - _Make sure it is in HTML format or it will not work_
+  
+  - Example:
+  
+```{r}
+knitr::kable(head(Chem_Data[, 1:5]), format = 'html')
+```
+---
+
+# Autoplay
+
+- You can enable _autoplay_ by adding to the **nature** section of the YAML at the beginning of the presentation.
+
+
+```{r, eval = FALSE}
+output:
+  xaringan::moon_reader:
+    nature:
+      {{autoplay: 50000}}
+```
+
+- To make the presentation loop after it ends, add the sub-option called _loop_ to **TRUE**
+
+```{r, eval = FALSE}
+output:
+  xaringan::moon_reader:
+    nature:
+      autoplay:
+        interval: 50000
+        loop: true   #<< 
+```
+
+---
