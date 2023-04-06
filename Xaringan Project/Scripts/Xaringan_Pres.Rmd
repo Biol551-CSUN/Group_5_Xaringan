@@ -1,0 +1,199 @@
+---
+title: "R Package -- Xaringan"
+subtitle: "⚔<br/>"
+author: "Cameron, David, Mikayla, Rachel"
+date: "`r Sys.Date()`"
+output:
+  xaringan::moon_reader:
+    yolo: true
+    css: [default, metropolis, metropolis-fonts]
+    lib_dir: libs
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+---    
+```{r setup, include=FALSE}
+```
+
+
+---
+
+# What is Xaringan?  
+
+Xaringan is an R package used to create HTML presentations using Rmarkdown interfaces.  
+
+Slides created by Xaringan are rendered by remark.js (an HTML JavaScript presentation program) and converted to an HTML form from R markdown.  
+
+An understanding of **remark.js** is a good place to start!!
+
+<img src="https://user-images.githubusercontent.com/163582/45438104-ea200600-b67b-11e8-80fa-d9f2a99a03b0.png" alt="xaringan logo" width="30%" height="80%" style="display: block; margin: 0 auto;">
+
+
+---
+
+.left-column[<span style="font-size: 40px;">Basics of remark.js</span>]
+
+.right-column[ 
+1. Markdown-driven slideshow tool
+1. Regular Markdown rules apply with only a single exception:
+   - A line containing **three dashes** constitutes a new slide (---)
+2. remark.js does not support R, only Markdown
+3. Markdown-formatted chunk of text is transformed into individual slides by JavaScript running in the browser
+4. remark.js can be thought of as a precursor to xaringan - xaringan understands R ]
+
+---
+
+.left-column[<span style="font-size: 40px;">Basics of Xaringan</span>]
+
+.right-column[
+1. R Markdown extension that uses remark.js to generate HTML slides
+1. The name originates from Naruto
+2. Very customizable and has multiple uses including theme customization and more
+1. Some features include:
+   - Autoplay
+   - Countdown
+   - Highlighting Code
+]
+.right-column[
+```{r,eval=FALSE,message=FALSE, warning=FALSE}
+# THIS IS WHAT A YAML AND INTRO SLIDE LOOK LIKE IN XARINGAN
+output:
+  xaringan::moon_reader:
+---
+# Get Started
+
+Hi !!!!!!
+```
+]
+---
+# Let's Get Started with Xaringan
+
+Everyone should go ahead and install xaringan using:
+
+```{r,eval=FALSE,message=FALSE, warning=FALSE}
+install.packages("xaringan")   #<< 
+#install xaringan straight from R packages
+```
+--
+Now...
+
+---
+
+---
+
+# Adding R code
+
+- Adding a R code chunk to the presentation is the same as in a RMarkdown document.
+
+  - Using **Ctrl+Alt+I** _(for both windows and mac)_ still works 
+  
+  - Example:
+.pull-center[
+```{r, message=FALSE}
+library(tidyverse)
+library(here)
+```
+]  
+
+---
+  
+# Higlighting Code
+- You can highlight code by using '{{}}' or '#<<':
+
+  - Example:
+  
+```{r}
+{{Chem_Data <- read.csv(here("Xaringan Project", "Data", "chemicaldata_maunalua.csv"))}}
+```
+```{r, echo=FALSE}
+Clean_Chem_Data <- Chem_Data %>%
+  drop_na()
+```
+
+- _You can also use a leading asterisk but it is harder to use compared to the brackets_
+---
+
+# Adding Plots
+
+- Plots are fairly easy to add.
+
+- Use an R Code Chunk and plot like you normally would.
+
+.pull-left[
+```{r, exampleplot, eval= FALSE, message=FALSE}
+#.pull-left[        #<<
+Clean_Chem_Data %>%
+  ggplot(aes(x = NN,
+             y = Phosphate,
+             color = Zone))+
+  geom_point(size = 2.5)+
+  geom_smooth(method = lm)+
+  theme_bw()+
+  scale_color_viridis_d()+
+  facet_wrap(~Zone)#]       #<<
+```
+]
+
+.pull-right[
+```{r exampleplot-out, ref.label="exampleplot", echo=FALSE, message=FALSE, warning=FALSE}
+
+```
+
+]
+---
+
+# Adding a plot
+
+- To make the code chunk and plot separate, you need to use:
+
+  - Two seperate R code chunks
+  
+      - One contains the code for the plot but add **eval = FALSE** to the {r} section to keep the plot from showing.
+    
+      - The other is a R code chunk that uses the name given to the plot code chunk but instead adds _-out_ to the end.
+    
+          - Add **ref.label="plot name"** to show the plot.
+      
+- You can then use **pull-left[]**, **pull-right[]**, and **pull-center[]** around the code chunks to move them on the slide.
+
+  - _When using these funtions makes sure to put a "." in front of them_
+---
+
+# Adding a Table
+
+- You are able to add a kable table to the presentation
+
+  - _Make sure it is in HTML format or it will not work_
+  
+  - Example:
+  
+```{r}
+knitr::kable(head(Chem_Data[, 1:5]), format = 'html')
+```
+---
+
+# Autoplay
+
+- You can enable _autoplay_ by adding to the **nature** section of the YAML at the beginning of the presentation.
+
+
+```{r, eval = FALSE}
+output:
+  xaringan::moon_reader:
+    nature:
+      {{autoplay: 50000}}
+```
+
+- To make the presentation loop after it ends, add the sub-option called _loop_ to **TRUE**
+
+```{r, eval = FALSE}
+output:
+  xaringan::moon_reader:
+    nature:
+      autoplay:
+        interval: 50000
+        loop: true   #<< 
+```
+
+---
