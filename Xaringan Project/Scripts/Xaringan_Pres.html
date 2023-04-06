@@ -4,7 +4,7 @@
     <title>R Package – Xaringan</title>
     <meta charset="utf-8" />
     <meta name="author" content="Cameron, David, Mikayla, Rachel" />
-    <meta name="date" content="2023-03-16" />
+    <meta name="date" content="2023-04-06" />
     <script src="libs/header-attrs-2.20/header-attrs.js"></script>
     <link href="libs/remark-css-0.0.1/default.css" rel="stylesheet" />
     <link href="libs/remark-css-0.0.1/metropolis.css" rel="stylesheet" />
@@ -24,7 +24,7 @@ class: center, middle, inverse, title-slide
 ### Cameron, David, Mikayla, Rachel
 ]
 .date[
-### 2023-03-16
+### 2023-04-06
 ]
 
 ---
@@ -90,13 +90,53 @@ Everyone should go ahead and install xaringan using:
 
 ```r
 *install.packages("xaringan")
-#install xaringan straight from R packages
+library(xaringan)
+#install and run xaringan straight from R packages
 ```
 --
-Now...
+Now...  
 
+--
+We can open a new R Markdown document by going to **File** &lt;- **New File** &lt;- **R Markdown**  
+
+--
+&lt;p align="center"&gt;
+&lt;img src="../Data/Markdown.png" alt="Xaringan YAML" width="400" height="400"&gt;
+&lt;/p&gt;
 ---
+# YAML Text: Xaringan Setup
 
+Now name your document something useful: Such as "My first Xaringan Presentation"
+
+We then want to select **"From Template"**  
+
+--
+&lt;p align="center"&gt;
+&lt;img src="../Data/Xaringan_Name.png" alt="Xaringan Name" width="450" height="250"&gt;
+&lt;/p&gt;  
+--
+Then we want to scroll down and select "Ninja Presentation" from our template menu
+--
+&lt;p align="center"&gt;
+&lt;img src="../Data/Xaringan_YAML.png" alt="Xaringan YAML" width="450" height="250"&gt;
+&lt;/p&gt;
+---
+# YAML Text: Xaringan Setup
+
+Now delete everything that isn't the YAML text the bottom of the YAML text should look like this:
+
+
+```r
+# THIS IS WHAT A YAML AND INTRO SLIDE LOOK LIKE IN XARINGAN
+output:
+  xaringan::moon_reader:
+---
+# Get Started
+
+Hi !!!!!!}
+```
+
+Now we have the base of Xaringan Presentation!!!!
 ---
 
 # Adding R code
