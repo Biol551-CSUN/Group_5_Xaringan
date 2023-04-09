@@ -121,6 +121,24 @@ Hi !!!!!!}
 
 Now we have the base of Xaringan Presentation!!!!
 ---
+# How do we separate slides in R Markdown?
+
+- Using three dashes (---) directly in our R markdown document we can separate slides
+- These three dashes should be on their own line after the last text or code we want to put in that slide
+- Example:
+```{r eval=FALSE}
+--- #<<
+  # Slide 1 
+  
+  Text, text, text, text, code
+--- #<<
+  # Slide 2 
+  
+  Text, text, text, text, list, code
+--- #<<
+```
+
+---
 
 # Adding R code
 
@@ -152,6 +170,25 @@ Clean_Chem_Data <- Chem_Data %>%
 ```
 
 - _You can also use a leading asterisk but it is harder to use compared to the brackets_
+---
+# Adding Images to a Xaringan Slide
+
+- Adding images to a xaringan slide is a relatively easy process
+
+- It is the same as adding images to a R Markdown document with a few extra steps
+> You can input the position of these images using a content class (ex: .center)
+
+```{r eval=FALSE}
+# Adding Local images - these images should be in the same folder as the project
+.center[![Inputs](libs/images/InputOutput2.PNG)] # input path to the image
+
+# Adding images from the web - add the URL
+.center[![Inputs](www.BIO551.com/giveusanA.png] # insert the url to the image
+
+```
+--
+.center[<img src="https://a.pinatafarm.com/1200x1191/38aedbbd08/drake-kansas-city-jersey.jpg" width="400" height="250" alt="Drake">]
+
 ---
 
 # Adding Plots
@@ -236,4 +273,116 @@ output:
         loop: true   #<< 
 ```
 
+---
+# Slide Layout
+
+- Using something called **content classes** we can assign classes to elements that  
+can alter the display of our slides!!
+
+- Examples include:
+```{r eval=FALSE}
+#.pull-left["element"] or .pull-right["element"] where our element can be 
+# an image, text, or a list
+
+.pull-left[ 
+- Bullet point
+
+- Another bullet point
+]
+
+.pull-right[
+![an image](blank.png)
+]
+
+.center []
+
+.right-column[] 
+```
+
+
+---
+# Macros
+- Change the size of pictures
+  - use code: `<img src="image.jpg" style="width: 50%" />`
+ 
+<img src= "https://pbs.twimg.com/profile_images/743156951572414472/rzyTdiiR_400x400.jpg" + url +  style="width: 50%" />
+
+---
+# Presenter Notes
+- Presenter can create notes within the script that won't be shown in slides!
+- To create hidden slides, all you need is to type "???" after the text you want to be shown and before the notes you want to create.
+- To view these notes just click [p] in the presenter view, you will have to check settings to not mirror displays
+
+For Example:
+```{r eval = FALSE}
+???
+you cant see me :-:
+  
+# this will hide text written below the question marks 
+```
+
+---
+# Yolo - TRUE
+
+- You must be wondering why there is a random picture of some guy with a mustache this is a YAML option that comes standard in the xaringan package 
+- This option will randomly insert a picture of Karl Broman into your slides 
+
+```{r eval=FALSE}
+---
+output:
+  xaringan::moon_reader:
+    yolo: true #<<
+---
+# you can also use yolo:true to add other pictures
+  
+---
+output:
+  xaringan::moon_reader:
+    yolo:
+      img: image.png # image #<<
+      times: 5 # how many times do you want this to show up randomly #<<
+---
+  
+```
+
+---
+# Incremental Slides
+
+- Another essential aspect to Xaringan is the use of Incremental slides, which has been used throughout this presentation  
+
+--
+
+- The use of incremental slides is similar to that of a "click in" animation in powerpoint and will show text incrementally and is done by using a double dash (--)
+
+--
+- We can use incremental slides within our slide separations (---), make sure to **click return or "enter"** before placing a double dash to assign the next text to a different line
+
+- Example:
+
+```{r eval=FALSE}
+--- 
+  # Slide 1
+  
+  Text I want to show first
+
+-- #<<
+  Text I want to show second
+
+-- #<<
+  Text I want to show third
+
+---
+```
+---
+#Disadvantages of Xaringan
+
+- A good understanding of CSS is needed to navigate the many themes and customization it takes to really change the Xaringan package into what you want it to look like
+
+> You can keep the 'ninja' theme if you don't really want to change anything
+  
+- The output file can sometimes be challenging to work with so you should always output it to the browser since some images and other renderings might not show
+
+- HTML widgets may also not work well with Xaringan
+
+.center[![Pros](../Data/Pros_and_Cons.png)]
 ---
