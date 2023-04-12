@@ -15,6 +15,7 @@ output:
 ---    
 ```{r setup, include=FALSE}
 ```
+
 ---
 
 # What is Xaringan?  
@@ -149,6 +150,7 @@ Now we have the base of Xaringan Presentation!!!!
 ```{r, message=FALSE}
 library(tidyverse)
 library(here)
+library(palmerpenguins)
 ```
 ]  
 
@@ -395,3 +397,84 @@ output:
 
 .center[![Pros](../Data/Pros_and_Cons.png)]
 ---
+
+# Now it's your turn to make a presentation!
+
+- Create a header called "Load Libraries" in the file we had you create at the beginning of the presentation.
+
+--
+
+- Go ahead and add a code chunk and load these libraries:
+
+```{r, eval=FALSE}
+library(tidyverse)
+library(here)
+library(palmerpenguins)
+```
+
+---
+
+# Let's add a basic plot
+
+- Create a basic plot using the penguins data set
+
+```{r penguinplot, message=FALSE, warning=FALSE}
+ggplot(data = penguins, aes(x = bill_length_mm,
+                            y = flipper_length_mm,
+                            color = species))+
+  geom_point()+
+  theme_bw()+
+  geom_smooth(method = "lm")+
+  scale_color_viridis_d()
+```
+
+---
+# Let's clean it up a bit
+
+- Add a name in the code chunk for your plot
+
+--
+
+- Use the content class below around your code chunk to pull it to the left. 
+```{r eval=FALSE}
+.pull-left[code chunk]
+```
+
+--
+
+- Add **eval = FALSE** to the {r} bracket so it won't show the plot.
+
+---
+# Let's clean it up a bit
+
+- Now add a code chunk below your plot's code chunk that includes what's below in the {r} bracket:
+
+```{r eval=FALSE}
+{r penguinplot-out, ref.label="penguinplot", echo=FALSE, message=FALSE, warning=FALSE}
+```
+
+--
+
+- Go ahead and add the content class to pull the plot to the right and add it around the code chunk.
+
+---
+
+# Now it should look like this!
+
+.pull-left[
+```{r penguinplot1, message=FALSE, warning=FALSE, eval=FALSE}
+ggplot(data = penguins, aes(x = bill_length_mm,
+                            y = flipper_length_mm,
+                            color = species))+
+  geom_point()+
+  theme_bw()+
+  geom_smooth(method = "lm")+
+  scale_color_viridis_d()
+```
+]
+
+.pull-right[
+```{r penguinplot1-out, ref.label="penguinplot", echo=FALSE, message=FALSE, warning=FALSE}
+
+```
+]
