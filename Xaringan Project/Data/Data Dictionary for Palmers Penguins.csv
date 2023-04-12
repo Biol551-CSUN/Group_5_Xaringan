@@ -1,0 +1,9 @@
+name,plot_name,class,description
+species,Species,Double,The different species of penguins present on the island.
+island,Island,Double,The names of the islands where the observations were taken.
+bill_length_mm,Bill Length (mm),Character,The lateral length of the penguin's bill measure in millimeters (mm).
+bill_depth_mm,Bill Depth (mm),Character,The vertical length of the penguin's bill measured in millimeters (mm).
+flipper_length_mm,Flipper Length (mm),Character,The length of the penguin's flipper measured in millimeters (mm).
+body_mass_g,Body Mass (g),Character,Weight of the penguin in grams (g).
+sex,Sex,Double,Sex of the penguin (Male/Female).
+year,Year,Double,Year the observations were taken.

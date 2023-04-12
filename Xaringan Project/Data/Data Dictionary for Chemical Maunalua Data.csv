@@ -1,16 +1,16 @@
-name,plot_name,description
-Waypoint,Waypoint,The waypoint the data was collected at.
-Zone,Zone,The specific zone of the ocean where the data was collected at.
-Lat,Latitude,The latitude where the data was collected.
-Long,Longitude,The longitude where the data was collected.
-Site,Site,The particular site where the data was collected. Data was collected at Black Point (BP) and Wailupe (W).
-Season,Season,The current season at the time of data collection. (SPRING/FALL).
-Tide_time,Tide/Time,The current state of the tide at the time of data collection (High/Low) and the time of day (Day/Night).
-Temp_in,Temperature,The temperature of the ocean at the time of data collection. Measured in Celsius (°C).
-Salinity,Salinity,The salinity of the ocean at the time of data collection.
-Phosphate,Phosphate,The phosphate concentration of the ocean at the time of data collection.
-Silicate,Silicate,The silicate concentration of the ocean at the time of data collection.
-NN,Nitrate + Nitrite,The nitrate + nitrite (NN) concentrations of the ocean at the time of data collection.
-pH ,pH ,The pH of the ocean at the time of data collection.
-TA,Total Alkalinity,The total alkalinity (TA) of the ocean at the time of data collection.
-percent_sgd,% SGD,The percentage of submarine groundwater discharge (SGD) in the ocean at the time of data collection.
+name,plot_name,Class,description
+Waypoint,Waypoint,Integer,The waypoint the data was collected at.
+Zone,Zone,Character,The specific zone of the ocean where the data was collected at.
+Lat,Latitude,Numeric,The latitude where the data was collected.
+Long,Longitude,Numeric,The longitude where the data was collected.
+Site,Site,Character,The particular site where the data was collected. Data was collected at Black Point (BP) and Wailupe (W).
+Season,Season,Character,The current season at the time of data collection. (SPRING/FALL).
+Tide_time,Tide/Time,Character,The current state of the tide at the time of data collection (High/Low) and the time of day (Day/Night).
+Temp_in,Temperature,Numeric,The temperature of the ocean at the time of data collection. Measured in Celsius (°C).
+Salinity,Salinity,Numeric,The salinity of the ocean at the time of data collection.
+Phosphate,Phosphate,Numeric,The phosphate concentration of the ocean at the time of data collection.
+Silicate,Silicate,Numeric,The silicate concentration of the ocean at the time of data collection.
+NN,Nitrate + Nitrite,Numeric,The nitrate + nitrite (NN) concentrations of the ocean at the time of data collection.
+pH ,pH ,Numeric,The pH of the ocean at the time of data collection.
+TA,Total Alkalinity,Numeric,The total alkalinity (TA) of the ocean at the time of data collection.
+percent_sgd,% SGD,Numeric,The percentage of submarine groundwater discharge (SGD) in the ocean at the time of data collection.
