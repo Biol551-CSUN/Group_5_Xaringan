@@ -15,8 +15,6 @@ output:
 ---    
 ```{r setup, include=FALSE}
 ```
-
-
 ---
 
 # What is Xaringan?  
@@ -163,6 +161,7 @@ library(here)
   
 ```{r}
 {{Chem_Data <- read.csv(here("Xaringan Project", "Data", "chemicaldata_maunalua.csv"))}}
+# Highlights the area you surround with the {{}}
 ```
 ```{r, echo=FALSE}
 Clean_Chem_Data <- Chem_Data %>%
@@ -209,12 +208,19 @@ Clean_Chem_Data %>%
   theme_bw()+
   scale_color_viridis_d()+
   facet_wrap(~Zone)#]       #<<
+# Just a basic plot to illustrate how adding a plot to the slides works
+# Only shows the code and not the plot itself
 ```
 ]
 
+```{r, echo=FALSE, message=FALSE}
+ggsave(here("Xaringan Project", "Output", "Example Plot.png"))
+```
+
+
 .pull-right[
 ```{r exampleplot-out, ref.label="exampleplot", echo=FALSE, message=FALSE, warning=FALSE}
-
+# Adds the image of the plot to the slides.
 ```
 
 ]
@@ -224,7 +230,7 @@ Clean_Chem_Data %>%
 
 - To make the code chunk and plot separate, you need to use:
 
-  - Two seperate R code chunks
+  - Two separate R code chunks
   
       - One contains the code for the plot but add **eval = FALSE** to the {r} section to keep the plot from showing.
     
@@ -234,7 +240,7 @@ Clean_Chem_Data %>%
       
 - You can then use **pull-left[]**, **pull-right[]**, and **pull-center[]** around the code chunks to move them on the slide.
 
-  - _When using these funtions makes sure to put a "." in front of them_
+  - _When using these functions makes sure to put a "." in front of them_
 ---
 
 # Adding a Table
@@ -247,6 +253,7 @@ Clean_Chem_Data %>%
   
 ```{r}
 knitr::kable(head(Chem_Data[, 1:5]), format = 'html')
+# Adds a table to the slide
 ```
 ---
 
@@ -259,7 +266,8 @@ knitr::kable(head(Chem_Data[, 1:5]), format = 'html')
 output:
   xaringan::moon_reader:
     nature:
-      {{autoplay: 50000}}
+   {{autoplay: 50000}}
+# This makes iot so the slides change automatically at a specific time
 ```
 
 - To make the presentation loop after it ends, add the sub-option called _loop_ to **TRUE**
@@ -271,6 +279,7 @@ output:
       autoplay:
         interval: 50000
         loop: true   #<< 
+# Loops the presentation after it is over
 ```
 
 ---
@@ -324,7 +333,7 @@ you cant see me :-:
 ---
 # Yolo - TRUE
 
-- You must be wondering why there is a random picture of some guy with a mustache this is a YAML option that comes standard in the xaringan package 
+- You must be wondering why there is a random picture of some guy with a mustache, this is a YAML option that comes standard in the xaringan package 
 - This option will randomly insert a picture of Karl Broman into your slides 
 
 ```{r eval=FALSE}

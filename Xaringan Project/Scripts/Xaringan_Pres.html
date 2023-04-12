@@ -4,7 +4,7 @@
     <title>R Package – Xaringan</title>
     <meta charset="utf-8" />
     <meta name="author" content="Cameron, David, Mikayla, Rachel" />
-    <meta name="date" content="2023-04-09" />
+    <meta name="date" content="2023-04-11" />
     <script src="libs/header-attrs-2.20/header-attrs.js"></script>
     <link href="libs/remark-css-0.0.1/default.css" rel="stylesheet" />
     <link href="libs/remark-css-0.0.1/metropolis.css" rel="stylesheet" />
@@ -24,12 +24,10 @@ class: center, middle, inverse, title-slide
 ### Cameron, David, Mikayla, Rachel
 ]
 .date[
-### 2023-04-09
+### 2023-04-11
 ]
 
 ---
-
-
 
 
 ---
@@ -183,6 +181,7 @@ library(here)
 
 ```r
 *Chem_Data &lt;- read.csv(here("Xaringan Project", "Data", "chemicaldata_maunalua.csv"))
+# Highlights the area you surround with the {{}}
 ```
 
 
@@ -227,8 +226,13 @@ Clean_Chem_Data %&gt;%
   theme_bw()+
   scale_color_viridis_d()+
 * facet_wrap(~Zone)#]
+# Just a basic plot to illustrate how adding a plot to the slides works
+# Only shows the code and not the plot itself
 ```
 ]
+
+
+
 
 .pull-right[
 ![](Xaringan_Pres_files/figure-html/exampleplot-out-1.png)&lt;!-- --&gt;
@@ -240,7 +244,7 @@ Clean_Chem_Data %&gt;%
 
 - To make the code chunk and plot separate, you need to use:
 
-  - Two seperate R code chunks
+  - Two separate R code chunks
   
       - One contains the code for the plot but add **eval = FALSE** to the {r} section to keep the plot from showing.
     
@@ -250,7 +254,7 @@ Clean_Chem_Data %&gt;%
       
 - You can then use **pull-left[]**, **pull-right[]**, and **pull-center[]** around the code chunks to move them on the slide.
 
-  - _When using these funtions makes sure to put a "." in front of them_
+  - _When using these functions makes sure to put a "." in front of them_
 ---
 
 # Adding a Table
@@ -321,6 +325,10 @@ knitr::kable(head(Chem_Data[, 1:5]), format = 'html')
   &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
+
+```r
+# Adds a table to the slide
+```
 ---
 
 # Autoplay
@@ -333,7 +341,8 @@ knitr::kable(head(Chem_Data[, 1:5]), format = 'html')
 output:
   xaringan::moon_reader:
     nature:
-*      autoplay: 50000
+*   autoplay: 50000
+# This makes iot so the slides change automatically at a specific time
 ```
 
 - To make the presentation loop after it ends, add the sub-option called _loop_ to **TRUE**
@@ -346,8 +355,11 @@ output:
       autoplay:
         interval: 50000
 *       loop: true
+# Loops the presentation after it is over
 ```
 
+---
+background-image: url(https://github.com/yihui/xaringan/releases/download/v0.0.2/karl-moustache.jpg)
 ---
 # Slide Layout
 
@@ -401,7 +413,7 @@ you cant see me :-:
 ---
 # Yolo - TRUE
 
-- You must be wondering why there is a random picture of some guy with a mustache this is a YAML option that comes standard in the xaringan package 
+- You must be wondering why there is a random picture of some guy with a mustache, this is a YAML option that comes standard in the xaringan package 
 - This option will randomly insert a picture of Karl Broman into your slides 
 
 
@@ -422,8 +434,6 @@ output:
 ---
 ```
 
----
-background-image: url(https://github.com/yihui/xaringan/releases/download/v0.0.2/karl-moustache.jpg)
 ---
 # Incremental Slides
 
@@ -465,6 +475,7 @@ background-image: url(https://github.com/yihui/xaringan/releases/download/v0.0.2
 - HTML widgets may also not work well with Xaringan
 
 .center[![Pros](../Data/Pros_and_Cons.png)]
+---
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
