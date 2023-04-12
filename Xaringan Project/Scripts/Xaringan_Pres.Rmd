@@ -402,7 +402,29 @@ output:
 
 - Create a header called "Load Libraries" in the file we had you create at the beginning of the presentation.
 
---
+---
+# Create a title page
+- Let's make a title page
+- Type in the following script 
+```{r eval= FALSE}
+---
+title: "Penguin Presentation"
+subtitle: "⚔<br/>"
+author: "Your name"
+date: "`r Sys.Date()`"
+output:
+  xaringan::moon_reader:
+    yolo: true
+    css: [default, metropolis, metropolis-fonts]
+    lib_dir: libs
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+---    
+```
+---
+# Required Libraries
 
 - Go ahead and add a code chunk and load these libraries:
 
@@ -478,3 +500,8 @@ ggplot(data = penguins, aes(x = bill_length_mm,
 
 ```
 ]
+---
+# Adding a table on Penguins
+```{r}
+knitr::kable(head( penguins[, 1:8]), format = 'html', size = 50%)
+```
