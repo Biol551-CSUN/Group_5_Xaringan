@@ -13,9 +13,9 @@ Group 5 members:
 
 ## Work members contributed
 
-- Cameron: Intro to Xaringan and the basics of how to use it.
-- David: Extra features that can be used with Xaringan. Completed the ReadMe file.
-- Mikayla: How to code in Xaringan and add plots, tables, etc. Made the example plots and completed the data dictionary.
+- **Cameron:** Intro to Xaringan and the basics of how to use it.
+- **David:** Extra features that can be used with Xaringan. Completed the ReadMe file.
+- **Mikayla:** How to code in Xaringan and add plots, tables, etc. Made the example plots and completed the data dictionary.
 - We all worked together on the interactive section.
 
 
