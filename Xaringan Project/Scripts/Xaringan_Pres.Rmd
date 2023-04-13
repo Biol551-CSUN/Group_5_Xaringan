@@ -1,7 +1,7 @@
 ---
 title: "R Package -- Xaringan"
 subtitle: "⚔<br/>"
-author: "Cameron, David, Mikayla, Rachel"
+author: "Cameron, David, Mikayla"
 date: "`r Sys.Date()`"
 output:
   xaringan::moon_reader:
@@ -158,6 +158,8 @@ library(palmerpenguins)
   
 # Higlighting Code
 - You can highlight code by using '{{}}' or '#<<':
+
+- I tend to like using the "#<<" after my code to highlight it
 
   - Example:
   
@@ -398,7 +400,9 @@ output:
 .center[![Pros](../Data/Pros_and_Cons.png)]
 ---
 
-# Now it's your turn to make a presentation!
+# Now it's your turn!
+
+- It's your turn to create your **first Xaringan Presentation!**
 
 - Create a header called "Load Libraries" in the file we had you create at the beginning of the presentation.
 
@@ -501,7 +505,36 @@ ggplot(data = penguins, aes(x = bill_length_mm,
 ```
 ]
 ---
-# Adding a table on Penguins
-```{r}
-knitr::kable(head( penguins[, 1:8]), format = 'html', size = 50%)
+# Think, Pair, Share
+
+- Now it's time to think, pair, and share!!
+
+- Create an **incremental slide**, with any picture, a chunk of code with highlights and an output using the penguins dataset
+
+--
+
+- An example could look like this:
+
+```{r warning=FALSE, fig.width=6, fig.height=3, fig.align='center'}
+penguins %>%
+  ggplot(aes(x = bill_depth_mm, y = flipper_length_mm)) +
+  facet_grid(~island) + #<<
+  geom_point()
 ```
+
+```{r, echo=FALSE, message=FALSE}
+ggsave(here("Xaringan Project", "Output", "Think_Pair_share.png"))
+```
+---
+
+# Peaches
+
+.pull-left[ <img src="https://www.rollingstone.com/wp-content/uploads/2023/04/jackblackmario.jpg?w=1581&h=1054&crop=1" + url +  style="width: 95%" />]
+
+.pull-center[<img src= "https://www.nme.com/wp-content/uploads/2023/04/jack-black-peaches@2000x1270.jpg" + url +  style="width: 50%" />]
+
+.pull-right[<img src= "https://assets.rebelmouse.io/eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpbWFnZSI6Imh0dHBzOi8vYXNzZXRzLnJibC5tcy8zMzQ0Nzk1MS9vcmlnaW4uanBnIiwiZXhwaXJlc19hdCI6MTcxMjg2MDY1OX0.csU5k7FnpFODUckDPUtms-knddLXeCs1gH7ZEfFZvy0/img.jpg?width=1200&height=800&quality=85&coordinates=268%2C0%2C12%2C53" + url +  style="width: 95%" />]
+
+https://www.youtube.com/watch?v=aW7bzd8uwyQ
+
+---
