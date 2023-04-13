@@ -126,7 +126,8 @@ Hi !!!!!!}
 
 Now we have the base of Xaringan Presentation!!!!
 ---
-# How do we separate slides in R Markdown?
+
+# How do we separate slides?  
 
 - Using three dashes (---) directly in our R markdown document we can separate slides
 
