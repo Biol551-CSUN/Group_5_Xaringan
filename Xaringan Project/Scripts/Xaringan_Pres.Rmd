@@ -601,6 +601,13 @@ ggsave(here("Xaringan Project", "Output", "Think_Pair_Share.png"))
 # Saves the plot
 ```
 
+
+---
+#THANK YOU!!
+
+## Thank you for listening and we hope Xaringan is something you end up using!
+
+<img src="https://user-images.githubusercontent.com/163582/45438104-ea200600-b67b-11e8-80fa-d9f2a99a03b0.png" alt="xaringan logo" width="30%" height="80%" style="display: block; margin: 0 auto;">
 ---
 
 # Peaches
@@ -613,4 +620,4 @@ ggsave(here("Xaringan Project", "Output", "Think_Pair_Share.png"))
 
 https://www.youtube.com/watch?v=aW7bzd8uwyQ
 
----
+
