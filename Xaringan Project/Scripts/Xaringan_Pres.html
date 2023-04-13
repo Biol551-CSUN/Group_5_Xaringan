@@ -73,12 +73,14 @@ An understanding of **remark.js** is a good place to start!!
 
 ```r
 # THIS IS WHAT A YAML AND INTRO SLIDE LOOK LIKE IN XARINGAN
+title: "Penguin Presentation"
+subtitle: "⚔️&lt;br/&gt;"
+author: "Your name"
+date: "`r Sys.Date()`"
 output:
   xaringan::moon_reader:
 ---
 # Get Started
-
-Hi !!!!!!
 ```
 ]
 ---
@@ -127,6 +129,10 @@ Now delete everything that isn't the YAML text the bottom of the YAML text shoul
 
 ```r
 # THIS IS WHAT A YAML AND INTRO SLIDE LOOK LIKE IN XARINGAN
+title: "Penguin Presentation"
+subtitle: "⚔️&lt;br/&gt;"
+author: "Your name"
+date: "`r Sys.Date()`"
 output:
   xaringan::moon_reader:
 ---
@@ -140,6 +146,9 @@ Now we have the base of Xaringan Presentation!!!!
 # How do we separate slides in R Markdown?
 
 - Using three dashes (---) directly in our R markdown document we can separate slides
+
+--
+
 - These three dashes should be on their own line after the last text or code we want to put in that slide
 - Example:
 
@@ -161,7 +170,11 @@ Now we have the base of Xaringan Presentation!!!!
 
 - Adding a R code chunk to the presentation is the same as in a RMarkdown document.
 
+--
+
   - Using **Ctrl+Alt+I** _(for both windows and mac)_ still works 
+  
+--
   
   - Example:
 .pull-center[
@@ -178,7 +191,11 @@ library(palmerpenguins)
 # Higlighting Code
 - You can highlight code by using '{{}}' or '#&lt;&lt;':
 
+--
+
 - I tend to like using the "#&lt;&lt;" after my code to highlight it
+
+--
 
   - Example:
   
@@ -189,14 +206,22 @@ library(palmerpenguins)
 ```
 
 
+--
 - _You can also use a leading asterisk but it is harder to use compared to the brackets_
 ---
 # Adding Images to a Xaringan Slide
 
 - Adding images to a xaringan slide is a relatively easy process
 
+--
+
 - It is the same as adding images to a R Markdown document with a few extra steps
+
+--
+
 &gt; You can input the position of these images using a content class (ex: .center)
+
+--
 
 
 ```r
@@ -215,25 +240,31 @@ library(palmerpenguins)
 
 - Plots are fairly easy to add.
 
+--
+
 - Use an R Code Chunk and plot like you normally would.
+
+--
 
 .pull-left[
 
 ```r
 *#.pull-left[
-Clean_Chem_Data %&gt;%
+Clean_Chem_Data %&gt;%     
   ggplot(aes(x = NN,
              y = Phosphate,
-             color = Zone))+
-  geom_point(size = 2.5)+
-  geom_smooth(method = lm)+
-  theme_bw()+
-  scale_color_viridis_d()+
-* facet_wrap(~Zone)#]
+             color = Zone))+  # Bases the colors off of the Zone they were in
+  geom_point(size = 2.5)+  # makes a basic point plot and changes the size of the points
+  geom_smooth(method = lm)+ # Adds lines to the plot
+  theme_bw()+   # Uses a black and white theme
+  scale_color_viridis_d()+  # Color blind friendly color palette
+  facet_wrap(~Zone)#]       #&lt;&lt;  # Facets the plot based on Zone
 # Just a basic plot to illustrate how adding a plot to the slides works
 # Only shows the code and not the plot itself
 ```
 ]
+
+
 
 
 
@@ -248,6 +279,8 @@ Clean_Chem_Data %&gt;%
 
 - To make the code chunk and plot separate, you need to use:
 
+--
+
   - Two separate R code chunks
   
       - One contains the code for the plot but add **eval = FALSE** to the {r} section to keep the plot from showing.
@@ -255,8 +288,12 @@ Clean_Chem_Data %&gt;%
       - The other is a R code chunk that uses the name given to the plot code chunk but instead adds _-out_ to the end.
     
           - Add **ref.label="plot name"** to show the plot.
+
+--
       
 - You can then use **pull-left[]**, **pull-right[]**, and **pull-center[]** around the code chunks to move them on the slide.
+
+--
 
   - _When using these functions makes sure to put a "." in front of them_
 ---
@@ -265,7 +302,11 @@ Clean_Chem_Data %&gt;%
 
 - You are able to add a kable table to the presentation
 
+--
+
   - _Make sure it is in HTML format or it will not work_
+  
+--
   
   - Example:
   
@@ -339,6 +380,8 @@ knitr::kable(head(Chem_Data[, 1:5]), format = 'html')
 
 - You can enable _autoplay_ by adding to the **nature** section of the YAML at the beginning of the presentation.
 
+--
+
 
 
 ```r
@@ -349,7 +392,11 @@ output:
 # This makes iot so the slides change automatically at a specific time
 ```
 
+--
+
 - To make the presentation loop after it ends, add the sub-option called _loop_ to **TRUE**
+
+--
 
 
 ```r
@@ -365,8 +412,9 @@ output:
 ---
 # Slide Layout
 
-- Using something called **content classes** we can assign classes to elements that  
-can alter the display of our slides!!
+- Using something called **content classes** we can assign classes to elements that can alter the display of our slides!!
+
+--
 
 - Examples include:
 
@@ -392,16 +440,28 @@ can alter the display of our slides!!
 
 ---
 # Macros
+
 - Change the size of pictures
   - use code: `&lt;img src="image.jpg" style="width: 50%" /&gt;`
+
+--
  
 &lt;img src= "https://pbs.twimg.com/profile_images/743156951572414472/rzyTdiiR_400x400.jpg" + url +  style="width: 50%" /&gt;
 
 ---
 # Presenter Notes
+
 - Presenter can create notes within the script that won't be shown in slides!
+
+--
+
 - To create hidden slides, all you need is to type "???" after the text you want to be shown and before the notes you want to create.
+
+--
+
 - To view these notes just click [p] in the presenter view, you will have to check settings to not mirror displays
+
+--
 
 For Example:
 
@@ -416,6 +476,9 @@ you cant see me :-:
 # Yolo - TRUE
 
 - You must be wondering why there is a random picture of some guy with a mustache, this is a YAML option that comes standard in the xaringan package 
+
+--
+
 - This option will randomly insert a picture of Karl Broman into your slides 
 
 
@@ -483,12 +546,14 @@ output:
 
 - It's your turn to create your **first Xaringan Presentation!**
 
-- Create a header called "Load Libraries" in the file we had you create at the beginning of the presentation.
-
 ---
 # Create a title page
+
 - Let's make a title page
-- Type in the following script 
+
+--
+
+- Type in the following script: 
 
 ```r
 ---
@@ -497,16 +562,20 @@ subtitle: "⚔&lt;br/&gt;"
 author: "Your name"
 date: "`r Sys.Date()`"
 output:
-  xaringan::moon_reader:
+  xaringan::moon_reader:   # This is the basic Xaringan YAML that comes standard with the package
     yolo: true
     css: [default, metropolis, metropolis-fonts]
-    lib_dir: libs
-    nature:
+    # Changes the theme of Xaringan through a CSS theme.
+    lib_dir: libs  # This creates a CSS folder that includes the themes we want for the directory
+    nature: 
       highlightStyle: github
       highlightLines: true
-      countIncrementalSlides: false
+      # This changes the style of highlights in our code chunks
+      countIncrementalSlides: false # Doesn't count incremental slides as their own slides
 ---    
 ```
+---
+background-image: url(https://github.com/yihui/xaringan/releases/download/v0.0.2/karl-moustache.jpg)
 ---
 # Required Libraries
 
@@ -527,19 +596,34 @@ library(palmerpenguins)
 
 
 ```r
-ggplot(data = penguins, aes(x = bill_length_mm,
+ggplot(data = penguins, aes(x = bill_length_mm,    # The values that I want to plot
                             y = flipper_length_mm,
-                            color = species))+
-  geom_point()+
-  theme_bw()+
-  geom_smooth(method = "lm")+
-  scale_color_viridis_d()
+                            color = species))+ # Will base color off of species
+  geom_point()+   # Makes a basic point plot
+  theme_bw()+    # Uses the black and white theme
+  geom_smooth(method = "lm")+  # Adds lines to the plot
+  scale_color_viridis_d()  # Color-blind friendly palette
 ```
 
 ![](Xaringan_Pres_files/figure-html/penguinplot-1.png)&lt;!-- --&gt;
 
----
-background-image: url(https://github.com/yihui/xaringan/releases/download/v0.0.2/karl-moustache.jpg)
+
+```r
+ggsave(here("Xaringan Project", "Output", "Interactive_Plot.png"))
+```
+
+```
+## Warning: Removed 2 rows containing non-finite values (`stat_smooth()`).
+```
+
+```
+## Warning: Removed 2 rows containing missing values (`geom_point()`).
+```
+
+```r
+# Saves the plot
+```
+
 ---
 # Let's clean it up a bit
 
@@ -550,7 +634,7 @@ background-image: url(https://github.com/yihui/xaringan/releases/download/v0.0.2
 - Use the content class below around your code chunk to pull it to the left. 
 
 ```r
-.pull-left[code chunk]
+.pull-left[code chunk]   # Pulls code chunk to the left
 ```
 
 --
@@ -564,7 +648,7 @@ background-image: url(https://github.com/yihui/xaringan/releases/download/v0.0.2
 
 
 ```r
-{r penguinplot-out, ref.label="penguinplot", echo=FALSE, message=FALSE, warning=FALSE}
+{r penguinplot-out, ref.label="penguinplot", echo=FALSE, message=FALSE, warning=FALSE}  # Allows you to have your plot on the page without the code being attached
 ```
 
 --
@@ -578,13 +662,13 @@ background-image: url(https://github.com/yihui/xaringan/releases/download/v0.0.2
 .pull-left[
 
 ```r
-ggplot(data = penguins, aes(x = bill_length_mm,
+ggplot(data = penguins, aes(x = bill_length_mm,    # The values that I want to plot
                             y = flipper_length_mm,
-                            color = species))+
-  geom_point()+
-  theme_bw()+
-  geom_smooth(method = "lm")+
-  scale_color_viridis_d()
+                            color = species))+ # Will base color off of species
+  geom_point()+   # Makes a basic point plot
+  theme_bw()+    # Uses the black and white theme
+  geom_smooth(method = "lm")+  # Adds lines to the plot
+  scale_color_viridis_d()  # Color blind friendly palette
 ```
 ]
 
@@ -604,13 +688,19 @@ ggplot(data = penguins, aes(x = bill_length_mm,
 
 
 ```r
-penguins %&gt;%
-  ggplot(aes(x = bill_depth_mm, y = flipper_length_mm)) +
-* facet_grid(~island) +
-  geom_point()
+penguins %&gt;%   # The data frame
+  ggplot(aes(x = bill_depth_mm,  # The values that we want plotted for x and y
+             y = flipper_length_mm)) +
+  facet_grid(~island) + #&lt;&lt;     # facets the plot according to which island
+  geom_point()  # Makes a basic point plot
 ```
 
-&lt;img src="Xaringan_Pres_files/figure-html/unnamed-chunk-21-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="Xaringan_Pres_files/figure-html/unnamed-chunk-22-1.png" style="display: block; margin: auto;" /&gt;
+
+
+```
+## Warning: Removed 2 rows containing missing values (`geom_point()`).
+```
 
 ---
 
